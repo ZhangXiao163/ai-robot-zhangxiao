@@ -6,6 +6,7 @@
   打开乌班图根目录 创建自己的目录         /robot 
 4  create ssh secret and clone git  repository 
    创建ssh 密钥并且克隆远程仓库到虚拟机 
+   https://zhuanlan.zhihu.com/p/688103044
 5  learn ros order 
    学习 ros 命令 
 6  example  举例
