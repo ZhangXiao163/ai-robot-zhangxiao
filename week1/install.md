@@ -1,4 +1,4 @@
- 1 Microsoft store  下载   terminal ubuntu
+ 1 Microsoft store  下载/download   terminal ubuntu
 
 2 terminal wsl --install
 
@@ -17,4 +17,5 @@ bash fishros
 \# 启动小乌龟
 
 ros2 run turtlesim turtlesim\_node
-
+效果图 
+![这是效果图](/runTurtle.png "runTurtle")
