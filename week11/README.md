@@ -10,3 +10,9 @@
 
    效果图 <br>
       ![这是效果图](commit.png )<br>
+
+-7 生成readme 目录 
+    github settings  Pages Build and deployment 选择分支 生成链接 
+     效果图 <br>
+      ![这是效果图](readmeimg.png )<br>
+    
