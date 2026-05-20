@@ -3,7 +3,7 @@
 - 3  拷贝代码 https://course.a-real.me/content/week13.html 13.6.2 Trot步态实现 test.py
 - 4  运行代码 python3 test.py  现在狗子可以站起来但现在不能走还会倒下 
 - 5  修改代码 让狗子站好并且走起来 
-     1. 自动筛选电机关节
+      1. 自动筛选电机关节
       通过遍历模型的所有关节，过滤掉固定件，只保留可旋转的驱动电机。
       for i in range(p.getNumJoints(robot_id)):
           info = p.getJointInfo(robot_id, i)
@@ -11,9 +11,9 @@
            # 仅保留可旋转的关节 (JOINT_REVOLUTE)
          if joint_type == p.JOINT_REVOLUTE:
           self.joints.append(i)
-      2.  绑定四条腿的序号
+       2.  绑定四条腿的序号
          明确每条腿对应的物理关节 ID，顺序严格按照：[侧摆, 大腿前摆, 小腿屈伸]。    
-      3. 生成对角步态轨迹利用正弦波让对角线的两条腿同步动作，而两组对角腿之间恰好相差 $\pi$（180 度）的相位，形成交替小跑。
+       3. 生成对角步态轨迹利用正弦波让对角线的两条腿同步动作，而两组对角腿之间恰好相差 $\pi$（180 度）的相位，形成交替小跑。
              # FR(右前)和RL(左后)同相，FL(左前)和RR(右后)反相
               if leg_name in ["FR", "RL"]:
              swing = amplitude * np.sin(phase)
@@ -48,6 +48,6 @@
 
 - 6 运行效果  效果图 <br>
       ![这是效果图](readmeimg.png )<br>
-<video src="radio.mp4" controls width="100%"></video>
+      ![[radio.mp4]]
 
 
