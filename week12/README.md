@@ -196,4 +196,4 @@ python3 test.py
 
 ## 演示视频
 
-![[radio.mp4]]
+[演示视频](radio.mp4)
