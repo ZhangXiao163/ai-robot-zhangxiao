@@ -190,14 +190,10 @@ python3 test.py
 
 ## 效果图
 
-```markdown
 ![这是效果图](readmeimg.png)
-```
 
 ---
 
 ## 演示视频
 
-```markdown
 ![[radio.mp4]]
-```
