@@ -111,7 +111,7 @@ tailscale ip -4
 - 不需要公网 IP 或端口映射
 
 ---
-## 7. 安装sudo apt update     sudo apt install python3-pip -y   
+## 7. 安装 sudo apt update     sudo apt install python3-pip -y   
      pip3 install -r  requirements.txt
      python3 camera_bridge.py 
 

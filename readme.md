@@ -113,6 +113,17 @@
 
 📂 [查看作业](./week12/README.md)
 
+
+---
+
+## Week 13 - Tailscale + WSL 远程连接配置
+
+- 1. 在 WSL 中安装 Tailscale
+- 2. 使用手机 Termius 连接 WSL
+- 3.  运行程序
+
+📂 [查看作业](./week13/README.md)
+
 ---
 
 # 🚀 技术栈
