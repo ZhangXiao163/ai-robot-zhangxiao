@@ -1,10 +1,37 @@
-- 1 docker run -p 6080:80 --security-opt seccomp=unconfined --shm-size=512m -v C:\zhangxiao\robot:/home/ws ghcr.io/tiryoh/ros2-desktop-vnc:humble<br>
-     //绑定一个镜像文件目录到虚拟机 docker 执行成功之后 会把两个目录镜像 修改一个另一个也会修改
-- 2     在ubantu里 安装opencv <br>
-        pip install opencv-python opencv-contrib-python //先安装环境<br>
-- 3     把代码copy到 test.py文件里 <br>
-        下载cat.png 放到同一目录下 执行 python test.py <br>
-- 4        效果图 <br>
-     ![这是效果图](garyCat.png )<br>
-       ![这是效果图](lightCat.png )<br>
-     
+# 智能基石：从线性代数到智能机器人系统 (Foundations of Intelligence)
+
+
+数理逻辑是机器智能的灵魂，本仓库旨在用代码将抽象的数学公式具象化，构建一套从理论到机器人落地应用的完整闭环。
+
+---
+
+## 📌 核心板块与技术架构
+
+项目主要由以下四个核心模块组成，层层递进，构成了智能机器人的完整技术栈：
+
+### 1. 🔢 线性代数底层 (Linear Algebra Foundations)
+*“线性代数是量化世界的语言，也是机器学习与空间变换的绝对基石。”*
+* **矩阵与向量运算**：高效的矩阵乘法、转置、行列式及逆矩阵的底层实现。
+* **空间变换（Transformations）**：基变换、特征值与特征向量（Eigenvalues & Eigenvectors）、奇异值分解（SVD）。
+* **高维映射**：用于数据降维（PCA）和多维特征提取的数学推导与代码实现。
+
+### 2. 🤖 机器人运动学 (Robot Kinematics)
+*“让机器人知道自己在哪，以及如何移动。”*
+* **空间刚体描述**：旋转矩阵、欧拉角、四元数（Quaternion）之间的转换与运算。
+* **齐次变换矩阵（Homogeneous Transformation）**：基于 DH 参数法（Denavit-Hartenberg）的连杆坐标系建立。
+* **前向与逆向运动学 (FK/IK)**：
+    * **正运动学**：从关节角推导机械臂末端执行器的空间位姿。
+    * **逆运动学**：已知目标位姿，求解各关节的运动角度（解析法与数值雅可比矩阵迭代法）。
+
+### 3. 👁️ 计算机视觉数学 (Mathematical Computer Vision)
+*“用数学几何赋能机器视觉，看懂三维世界。”*
+* **相机几何模型**：针孔相机模型、内参（Intrinsic）与外参（Extrinsic）矩阵推导、畸变矫正。
+* **对极几何 (Epipolar Geometry)**：本质矩阵（Essential Matrix）、基础矩阵（Fundamental Matrix）的估计与单应性变换（Homography）。
+* **三维重建基础**：点云（Point Cloud）的空间变换、特征点匹配（SIFT/ORB）后的空间位置求解（三角测量）。
+
+### 4. 🗺️ 路径规划算法 (Path Planning Algorithms)
+*“在复杂环境中，为智能体寻找全局或局部的最优移动轨迹。”*
+* **基于图搜索的算法**：Dijkstra 算法、$A^*$ 算法（结合启发式函数的空间最优路径寻找）。
+* **基于采样与随机的算法**：RRT（快速随机扩展树）、RRT*（渐进最优路径规划）。
+* **局部避障与优化**：动态窗口法（DWA）、人工势场法（APF）或基于多项式的轨迹平滑算法。
+
