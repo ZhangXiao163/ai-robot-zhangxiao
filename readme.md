@@ -43,13 +43,13 @@
 ### 🛠️ 阶段一：Linux 基础与 ROS2 机器人入门
 * **Week 02 - Ubuntu 与 ROS2 环境安装**
   * 安装 Ubuntu 系统、配置 ROS2 Humble 软件源、成功运行 `Turtlesim` 小乌龟。
-  * 📂 [查看 Week 02 作业](./week01/README.md) *(注: 对应 week01 目录)*
+  * 📂 [查看 Week 02 作业](./week02/README.md) *(注: 对应 week01 目录)*
 * **Week 03 - 小乌龟运动控制实践**
   * 深入 ROS2 节点通信，控制小乌龟实现几何画圆与平滑轨迹控制。
-  * 📂 [查看 Week 03 作业](./week02/README.md)
+  * 📂 [查看 Week 03 作业](./week03/README.md)
 * **Week 04 - 机器狗基础控制与几何绘制**
   * 启动、放倒机器狗底盘，编写 ROS2 节点控制小乌龟绘制精准正方形。
-  * 📂 [查看 Week 04 作业](./week03/README.md)
+  * 📂 [查看 Week 04 作业](./week04/README.md)
 * **Week 05 - ROS2 核心运动控制**
   * 进阶控制，编写通用几何轨迹发布器（画圆、画线控制）。
   * 📂 [查看 Week 05 作业](./week05/README.md)
