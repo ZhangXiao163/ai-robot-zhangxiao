@@ -93,7 +93,10 @@
   * 在 WSL 中部署 Tailscale 节点，打破内网限制。
   * 使用手机端 Termius 远程 SSH 连接 WSL 终端，实现随时随地远程调参和运行程序。
   * 📂 [查看 Week 13 作业](./week13/README.md)
-
+* **Week 14 - 实现一个支持手机远程控制和自主探索迷宫的小乌龟机器人系统。
+  * 通过手机浏览器访问控制网页；。
+  * 基于经典巡墙算法（Wall Following）自主探索迷宫的小乌龟机器人。
+  * 📂 [查看 Week 14 作业](./week14/README.md)
 ---
 
 ## 🛠️ 技术栈总览 (Tech Stack)
