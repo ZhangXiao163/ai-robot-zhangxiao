@@ -1,113 +1,175 @@
-# 🤖 AI 机器人课程实践仓库 - AIRobot
+# AI 机器人课程实践仓库 - AIRobot
 
-<p align="center">
-  <img src="https://img.shields.io/badge/ROS2-Humble-blue?style=flat-square&logo=ros" alt="ROS2">
-  <img src="https://img.shields.io/badge/Simulation-PyBullet-orange?style=flat-square" alt="PyBullet">
-  <img src="https://img.shields.io/badge/Environment-Docker%20%7C%20WSL2-green?style=flat-square&logo=docker" alt="Docker">
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="License">
-</p>
+本仓库用于记录 AI 机器人课程的阶段性实践成果。项目围绕 ROS2、turtlesim、PyBullet、Docker、WSL2 与远程运维工具展开，涵盖机器人基础控制、仿真环境搭建、运动算法、路径规划、四足机器人步态以及手机远程控制等内容。
 
-> 💡 **项目简介**：本仓库记录了在 **Ubuntu / WSL2** 环境下，围绕 **ROS2、PyBullet 仿真平台与 Docker 容器技术**展开的 AI 机器人全栈开发学习历程。核心涵盖机器人底盘控制、四足机器人 Trot 步态算法、以及智能机器人系统所必需的数学与视觉算法基石。
-
-🌐 **在线文档访问**：[👉 点击进入 GitHub Pages 预览](https://zhangxiao163.github.io/ai-robot-zhangxiao/)
+在线文档预览：[GitHub Pages](https://zhangxiao163.github.io/ai-robot-zhangxiao/)
 
 ---
 
-## 👨‍🎓 学生与学术信息
+## 项目信息
 
-| 基础项目 | 详细内容 |
+| 项目 | 内容 |
 | :--- | :--- |
-| **姓名 (Name)** | zhangxiao | 张孝 | 장효 |
-| **学号 (Student ID)** | 20242032 |
-| **项目周期 (Timeline)** | 2026-03-11 ~ 至今 |
+| 姓名 | zhangxiao / 张孝 / 장효 |
+| 学号 | 20242032 |
+| 项目周期 | 2026-03-11 至今 |
+| 课程方向 | AI 机器人系统开发与实践 |
 
 ---
 
-## 💻 统一开发环境 (Environment)
+## 项目目标
 
-| 组件/工具 | 技术选型与版本 | 作用说明 |
+本项目的目标是通过连续课程实践，逐步建立完整的机器人开发能力：
+
+- 熟悉 Ubuntu、WSL2、Docker 等机器人开发环境。
+- 掌握 ROS2 节点、话题、消息发布与订阅等核心机制。
+- 使用 turtlesim 完成基础运动控制与路径绘制。
+- 使用 PyBullet 搭建机器人仿真与四足机器人步态实验。
+- 理解线性代数、运动学、视觉几何、路径规划等智能机器人基础算法。
+- 实现基于手机浏览器的远程控制与自主探索机器人系统。
+
+---
+
+## 开发环境
+
+| 组件 | 技术选型 | 说明 |
 | :--- | :--- | :--- |
-| **操作系统** | Windows 11 + WSL2 / Ubuntu 22.04 LTS | 核心开发与运行环境 |
-| **机器人操作系统** | ROS2 Humble Hawksbill | 节点通信与分布式控制框架 |
-| **集成开发环境** | VSCode + WSL 远程扩展 | 代码编写、调试与版本控制 |
-| **物理仿真平台** | PyBullet Simulation | 四足机器人物理引擎与动力学仿真 |
-| **容器与虚拟化** | Docker 🚀 | 保证开发环境跨平台的一致性与快速部署 |
-| **远程连接** | Tailscale + Termius | 移动端/异地远程调试及控制 |
+| 操作系统 | Windows 11 + WSL2 / Ubuntu 22.04 LTS | 主要开发与运行环境 |
+| 机器人系统 | ROS2 Humble Hawksbill | 节点通信、话题发布、机器人控制 |
+| 开发工具 | VSCode + WSL 远程扩展 | 代码编写、调试与版本管理 |
+| 仿真平台 | turtlesim / PyBullet | 小乌龟控制与四足机器人仿真 |
+| 容器工具 | Docker | 环境隔离与可复现部署 |
+| 远程连接 | Tailscale / Termius | 手机端与异地远程调试 |
+| 编程语言 | Python / C++ / Bash | ROS2 节点、脚本与自动化工具 |
 
 ---
 
-## 📚 课程目录与核心作业 (Curriculum & Homework)
-
-这里记录了每周的课程要点与实践成果。点击 📂 即可跳转至对应周次的详细作业、代码及推导报告：
-
-### 🛠️ 阶段一：Linux 基础与 ROS2 机器人入门
-* **Week 02 - Ubuntu 与 ROS2 环境安装**
-  * 安装 Ubuntu 系统、配置 ROS2 Humble 软件源、成功运行 `Turtlesim` 小乌龟。
-  * 📂 [查看 Week 02 作业](./week02/README.md) *(注: 对应 week01 目录)*
-* **Week 03 - 小乌龟运动控制实践**
-  * 深入 ROS2 节点通信，控制小乌龟实现几何画圆与平滑轨迹控制。
-  * 📂 [查看 Week 03 作业](./week03/README.md)
-* **Week 04 - 机器狗基础控制与几何绘制**
-  * 启动、放倒机器狗底盘，编写 ROS2 节点控制小乌龟绘制精准正方形。
-  * 📂 [查看 Week 04 作业](./week04/README.md)
-* **Week 05 - ROS2 核心运动控制**
-  * 进阶控制，编写通用几何轨迹发布器（画圆、画线控制）。
-  * 📂 [查看 Week 05 作业](./week05/README.md)
-* **Week 06 - 全景监控系统集成**
-  * 编译并运行 `ros2_ws` 工作空间项目，打通传感器数据链路实现全景监控。
-  * 📂 [查看 Week 06 作业](./week06/README.md)
-* **Week 07 - 规范化代码管理**
-  * 重构与整理 Git 仓库结构，优化大文件及历史提交记录。
-  * 📂 [查看 Week 07 作业](./week07/README.md)
-
----
-
-### 🧠 阶段二：工业级工程容器化与智能算法基石
-* **Week 08 - Docker 机器人环境配置**
-  * 编写 Dockerfile，在容器内隔离运行 ROS2 并在宿主机 X11 转发成功显示小乌龟。
-  * 📂 [查看 Week 08 作业](./week08/README.md)
-
-* **Week 09 - 智能基石：从线性代数到智能机器人系统**
-  * 🪐 本周专注于智能机器人的“数学灵魂”与算法闭环，包含以下核心模块：
-    1. **线性代数底层**：坐标空间变换、旋转矩阵、四元数、特征值与 SVD 分解。
-    2. **机器人运动学**：DH 参数法、正运动学（FK）与逆运动学（IK）雅可比矩阵迭代求解。
-    3. **计算机视觉数学**：针孔相机模型、内外参矩阵、对极几何与双目三维重建。
-    4. **路径规划算法**：基于图搜索的 $A^*$ 算法、基于随机采样的 RRT/RRT* 与局部避障。
-  * 📂 [查看 Week 09 算法专题作业](./week09/README.md)
-
-* **Week 010 - 虚拟机目录挂载优化**
-  * 绑定镜像文件目录，配置高级虚拟机共享文件目录，优化资源传输效率。
-  * 📂 [查看 Week 10 作业](./week10/README.md)
-* **Week 11 - 开发环境系统镜像提交**
-  * 打包当前配置完整的 Ubuntu 运行环境，提交并发布一键部署镜像。
-  * 📂 [查看 Week 11 作业](./week11/README.md)
-
----
-
-### 🐕 阶段三：四足仿生机器人控制与远程运维
-* **Week 12 - PyBullet 四足机器人 Trot 步态实现**
-  * 建立四足机器人物理模型，编写基于 VMC（虚拟模型控制）或静力学的**小跑步态（Trot Gait）**算法。
-  * 实现机器狗在复杂地形下的姿态平衡控制与高稳定性行走。
-  * 📂 [查看 Week 12 步态作业](./week12/README.md)
-* **Week 13 - Tailscale 虚拟局域网与 WSL 远程连接**
-  * 在 WSL 中部署 Tailscale 节点，打破内网限制。
-  * 使用手机端 Termius 远程 SSH 连接 WSL 终端，实现随时随地远程调参和运行程序。
-  * 📂 [查看 Week 13 作业](./week13/README.md)
-* **Week 14 - 实现一个支持手机远程控制和自主探索迷宫的小乌龟机器人系统。
-  * 通过手机浏览器访问控制网页；。
-  * 基于经典巡墙算法（Wall Following）自主探索迷宫的小乌龟机器人。
-  * 📂 [查看 Week 14 作业](./week14/README.md)
----
-
-## 🛠️ 技术栈总览 (Tech Stack)
+## 仓库结构
 
 ```text
-┌────────────────────────────────────────────────────────────────────────┐
-│ 🚀 机器人开发:  ROS2 (Humble) / Gazebo / PyBullet (物理仿真)           │
-├────────────────────────────────────────────────────────────────────────┤
-│ 💻 基础设施:    Ubuntu 22.04 / WSL2 / Docker (容器化) / Tailscale       │
-├────────────────────────────────────────────────────────────────────────┤
-│ 🔢 核心算法:    运动学 (FK/IK) / Trot步态 / 线性代数视觉几何 / A*, RRT  │
-├────────────────────────────────────────────────────────────────────────┤
-│ 🐍 编程语言:    Python / C++ / Bash Shell                              │
-└────────────────────────────────────────────────────────────────────────┘
+ai-robot-zhangxiao/
+├── readme.md
+├── week02/    # Ubuntu 与 ROS2 环境安装
+├── week03/    # turtlesim 基础运动控制
+├── week04/    # 机器人基础控制与几何绘制
+├── week05/    # ROS2 轨迹发布与运动控制
+├── week06/    # 全景监控系统集成
+├── week07/    # Git 仓库整理与规范化
+├── week08/    # Docker 机器人环境配置
+├── week09/    # 智能机器人数学与算法基础
+├── week10/    # 虚拟机目录挂载优化
+├── week11/    # 开发环境镜像提交
+├── week12/    # PyBullet 四足机器人 Trot 步态
+├── week13/    # Tailscale 与 WSL 远程连接
+└── week14/    # 手机遥控与自主探索小乌龟系统
+```
+
+---
+
+## 课程实践目录
+
+### 阶段一：Linux 基础与 ROS2 入门
+
+| 周次 | 主题 | 主要成果 |
+| :--- | :--- | :--- |
+| [Week 02](./week02/README.md) | Ubuntu 与 ROS2 环境安装 | 安装 Ubuntu 与 ROS2 Humble，运行 turtlesim 示例。 |
+| [Week 03](./week03/README.md) | 小乌龟运动控制实践 | 理解 ROS2 节点通信，控制 turtlesim 完成基础运动。 |
+| [Week 04](./week04/README.md) | 机器人基础控制与几何绘制 | 编写 ROS2 控制节点，完成正方形等几何轨迹绘制。 |
+| [Week 05](./week05/README.md) | ROS2 核心运动控制 | 编写通用轨迹发布器，实现画圆、画线等控制任务。 |
+| [Week 06](./week06/README.md) | 全景监控系统集成 | 编译并运行 ROS2 工作空间，完成传感器数据链路集成。 |
+| [Week 07](./week07/README.md) | 规范化代码管理 | 整理 Git 仓库结构，优化文件组织与提交记录。 |
+
+### 阶段二：容器化环境与智能算法基础
+
+| 周次 | 主题 | 主要成果 |
+| :--- | :--- | :--- |
+| [Week 08](./week08/README.md) | Docker 机器人环境配置 | 编写 Dockerfile，在容器中运行 ROS2 与 turtlesim。 |
+| [Week 09](./week09/README.md) | 智能机器人数学基础 | 学习线性代数、运动学、视觉几何、A* 与 RRT 等算法。 |
+| [Week 10](./week10/README.md) | 虚拟机目录挂载优化 | 配置共享目录与镜像文件挂载，提高开发效率。 |
+| [Week 11](./week11/README.md) | 开发环境镜像提交 | 打包完整 Ubuntu/ROS2 开发环境，支持快速复现。 |
+
+### 阶段三：四足仿真、远程运维与综合项目
+
+| 周次 | 主题 | 主要成果 |
+| :--- | :--- | :--- |
+| [Week 12](./week12/README.md) | PyBullet 四足机器人 Trot 步态 | 搭建四足机器人仿真模型，实现小跑步态控制。 |
+| [Week 13](./week13/README.md) | Tailscale 与 WSL 远程连接 | 使用 Tailscale 打通虚拟局域网，并通过手机远程连接 WSL。 |
+| [Week 14](./week14/README.md) | 手机遥控与自主探索小乌龟系统 | 实现手机网页遥控、ROS2 桥接通信与右手法则巡墙探索。 |
+
+---
+
+## Week 14 综合项目亮点
+
+第十四周项目是本仓库的综合实践内容，目标是实现一个支持手机远程控制和自主探索迷宫的小乌龟机器人系统。
+
+核心模块包括：
+
+- 手机端网页控制界面：通过浏览器发送前进、后退、左转、右转等指令。
+- Python Bridge Server：接收网页请求并转换为 ROS2 控制消息。
+- ROS2 控制节点：向 `/turtle1/cmd_vel` 发布 `Twist` 消息，驱动 turtlesim 运动。
+- 自主探索算法：基于 Wall Following 与 Right-Hand Rule，实现迷宫巡墙探索。
+
+系统流程：
+
+```text
+手机浏览器
+    ↓
+网页控制界面
+    ↓
+HTTP / WebSocket
+    ↓
+Python Bridge Server
+    ↓
+ROS2 Node
+    ↓
+/turtle1/cmd_vel
+    ↓
+turtlesim
+```
+
+效果截图见：[week14/img1.png](./week14/img1.png)
+
+---
+
+## 技术栈概览
+
+| 分类 | 技术 |
+| :--- | :--- |
+| 机器人开发 | ROS2 Humble, turtlesim, PyBullet |
+| 仿真与控制 | Twist 消息, ROS2 Topic, Wall Following, Right-Hand Rule, Trot Gait |
+| 工程环境 | Ubuntu 22.04, WSL2, Docker, VSCode |
+| 远程运维 | Tailscale, Termius, SSH |
+| 算法基础 | FK/IK, Jacobian, A*, RRT/RRT*, 视觉几何 |
+| 编程语言 | Python, C++, Bash |
+
+---
+
+## 运行建议
+
+不同周次的作业依赖环境不同，建议进入对应目录阅读该周 README 后再运行。
+
+通用 ROS2 环境初始化示例：
+
+```bash
+source /opt/ros/humble/setup.bash
+```
+
+运行 turtlesim 示例：
+
+```bash
+ros2 run turtlesim turtlesim_node
+ros2 run turtlesim turtle_teleop_key
+```
+
+若运行自定义 ROS2 工作空间，通常需要先编译并加载环境：
+
+```bash
+colcon build
+source install/setup.bash
+```
+
+---
+
+## 学习总结
+
+通过本项目的持续实践，逐步完成了从基础环境搭建到综合机器人系统开发的学习闭环。项目不仅覆盖 ROS2 通信机制和机器人运动控制，也延伸到了容器化部署、远程连接、仿真平台、路径搜索和自主探索算法等内容，为后续真实机器人平台开发打下基础。

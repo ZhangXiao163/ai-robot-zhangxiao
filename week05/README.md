@@ -1,8 +1,75 @@
-## week4  让机器人画圆 画线
-  -  运行机器人代码 //create folder run  python3 demo01_panda.py       <br>
-  -  修改代码画圆 详见cycle_panda.py //edit runcycle  des cycle_panda.py <br>
-  -    - ![这是效果图](cycle.png )    <br>
-  -    2026-04-01 drawcycle.mp4 <br>
-  - 修改代码 画线 详见line_panda.py//edit drawline  des 详见line_panda.py <br>
-  -    - ![这是效果图](line.png )    <br>
-  -  2026-04-01  runline.mp4 <br>
+# Week 05 - 机器人画圆与画线控制
+
+本周基于 PyBullet 机器人控制程序，完成画圆和画线两类轨迹任务，并保存运行截图与视频结果。
+
+## 本周目标
+
+- 运行基础机器人控制示例。
+- 修改控制逻辑，使机器人末端或运动轨迹形成圆形。
+- 修改控制逻辑，使机器人完成直线运动。
+- 对比不同轨迹控制代码的实现方式。
+
+## 文件说明
+
+| 文件 | 说明 |
+| :--- | :--- |
+| `README.md` | 本周实验说明。 |
+| `demo01_panda.py` | Panda 机器人基础运行示例。 |
+| `cycle_panda.py` | 圆形轨迹控制代码。 |
+| `line_panda.py` | 直线轨迹控制代码。 |
+| `cycle.png` | 画圆效果截图。 |
+| `line.png` | 画线效果截图。 |
+| `2026-04-01 drawcycle.mp4` | 画圆过程视频。 |
+| `2026-04-01 runline.mp4` | 画线过程视频。 |
+
+## 环境准备
+
+确认已安装 Python 与 PyBullet：
+
+```bash
+pip3 install pybullet numpy
+```
+
+## 运行步骤
+
+运行基础 Panda 机器人示例：
+
+```bash
+python3 demo01_panda.py
+```
+
+运行画圆轨迹：
+
+```bash
+python3 cycle_panda.py
+```
+
+运行画线轨迹：
+
+```bash
+python3 line_panda.py
+```
+
+## 结果展示
+
+### 画圆结果
+
+![画圆效果](cycle.png)
+
+视频文件：`2026-04-01 drawcycle.mp4`
+
+### 画线结果
+
+![画线效果](line.png)
+
+视频文件：`2026-04-01 runline.mp4`
+
+## 实现思路
+
+- 画圆任务通过周期性改变目标点坐标，使轨迹满足圆形参数方程。
+- 画线任务通过固定方向增量移动目标点，使运动轨迹保持直线。
+- 两个实验都体现了“目标轨迹生成 + 控制器执行”的基本机器人控制流程。
+
+## 学习总结
+
+本周练习了从基础示例出发修改控制程序的方法。通过画圆和画线两个任务，可以直观看到轨迹参数对机器人运动结果的影响。

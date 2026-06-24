@@ -1,65 +1,80 @@
-# 🚀 Week 7 项目展示与仓库整理
+# Week 07 - 仓库整理与 GitHub Pages 部署
 
-欢迎来到第七周的项目仓库！本项目主要用于展示本周的开发成果，并已通过 GitHub Pages 成功部署。
+本周对课程仓库进行结构整理，完善 README 展示方式，并配置 GitHub Pages 作为在线文档入口。
 
-* **🎯 本周任务：** 规范化目录管理、完善 README 效果展示、配置 GitHub Pages 部署。
+## 本周目标
 
----
+- 规范课程作业目录结构。
+- 整理每周 README 与素材文件。
+- 学习 GitHub Pages 的部署流程。
+- 让项目成果可以通过网页链接预览。
 
-## 📂 目录结构
+## 本周工作内容
+
+### 1. 仓库结构整理
+
+将每周作业按照 `weekXX/` 的方式存放，便于查找、提交和展示：
 
 ```text
-├── week1/                 # 第一周项目
-├── week2/                 # 第二周项目
-│   └── ...
-├── week7/                 # 第七周项目文件夹
-│   ├── images/            # 效果图文件夹
-│   │   └── result.png     # 页面效果图
-│   ├── index.html         # 网页主入口
-│   └── README.md          # 本周项目说明（内含效果图）
-└── README.md              # 根目录总说明（当前文件）
+ai-robot-zhangxiao/
+├── readme.md
+├── week02/
+├── week03/
+├── week04/
+├── week05/
+├── week06/
+├── week07/
+└── ...
+```
 
+### 2. README 展示优化
 
-🛠 GitHub Pages 链接生成步骤
-要在仓库的 Settings 中生成个人在线预览链接，请按照以下步骤操作：
+README 不只记录命令，也需要说明：
 
-进入设置： 点击你 GitHub 仓库右上角的 Settings（齿轮图标）。
+- 本周任务目标。
+- 关键文件作用。
+- 实验运行步骤。
+- 结果截图或视频。
+- 学习总结。
 
-找到 Pages： 在左侧导航栏中，向下滚动找到 Code and automation 栏目，点击 Pages。
+这样的结构更适合课程作业检查，也方便自己复盘。
 
-配置分支（Build and deployment）：
+### 3. GitHub Pages 配置
 
-Source 保持默认的 Deploy from a branch。
+在 GitHub 仓库中进入：
 
-Branch 下拉菜单将 None 改为 main（或 master）。
+```text
+Settings -> Pages -> Build and deployment
+```
 
-目录选择 /root（如果你的主入口 index.html 在根目录）。
+选择部署分支后，GitHub 会生成在线预览链接。根目录 README 和各周 README 可以作为课程成果展示入口。
 
-保存配置： 点击右侧的 Save 按钮。
+## 常用 Git 操作
 
-获取链接： 稍等 1 分钟左右刷新页面，顶部会出现一行绿色的提示：“Your site is live at ...”，那个 URL 就是你的个人动态链接。
+查看当前状态：
 
-📝 Markdown 常用语法速查
-1. 标题
-使用 # 号标记，支持一到六级标题。
+```bash
+git status
+```
 
-# 一级标题
-## 二级标题
-### 三级标题
-2. 文本样式
-**这是加粗文本**
-*这是斜体文本*
-~~这是删除线~~
-`单行行内代码`
-3. 列表
-- 无序列表项 A
-- 无序列表项 B
+添加文件：
 
-1. 有序列表项一
-2. 有序列表项二
+```bash
+git add .
+```
 
-4. 链接与图片
-[点击跳转的文字](https://www.example.com)
-![图片说明](图片相对路径或网络地址)
-5. 代码块
-console.log("Hello, GitHub Pages!");
+提交修改：
+
+```bash
+git commit -m "update weekly readme"
+```
+
+推送到远程仓库：
+
+```bash
+git push
+```
+
+## 学习总结
+
+本周重点不是新增机器人算法，而是提升项目工程化管理能力。规范的目录、清晰的 README 和在线展示页面，可以让整个课程项目更完整、更容易被阅读和维护。

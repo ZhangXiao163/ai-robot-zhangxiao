@@ -1,8 +1,29 @@
-# Week 14 - Tailscale + WSL 远程连接配置教程
+# Week 13 - Tailscale 与 WSL 远程连接
 
-## 1. 在 WSL 中安装 Tailscale
+本周配置 Tailscale 虚拟局域网，实现手机端远程连接 WSL/Ubuntu 环境，并准备远程调试与图像传输相关脚本。
 
-在 WSL 终端执行以下命令：
+## 本周目标
+
+- 在 WSL 中安装并启动 Tailscale。
+- 在手机端登录同一个 Tailscale 账号。
+- 使用 Termius 或 SSH 工具远程连接 WSL。
+- 验证远程网络连通性。
+- 了解 `camera_bridge.py` 的远程图像桥接用途。
+
+## 文件说明
+
+| 文件 | 说明 |
+| :--- | :--- |
+| `README.md` | 本周配置说明。 |
+| `camera_bridge.py` | 摄像头或图像数据桥接脚本。 |
+| `requirements.txt` | Python 依赖列表。 |
+| `result.jpg` | 运行结果或图像传输效果。 |
+| `wsl1.png` | WSL/Tailscale 配置截图。 |
+| `wsl2.png` | 远程连接效果截图。 |
+
+## 安装 Tailscale
+
+在 WSL 终端执行：
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
@@ -10,115 +31,64 @@ sudo service tailscaled start
 sudo tailscale up
 ```
 
-执行 `sudo tailscale up` 后，会输出一个登录链接，例如：
+执行 `sudo tailscale up` 后，终端会输出登录链接。打开链接并完成账号授权后，WSL 会加入当前 Tailscale 私有网络。
 
-```text
-https://login.tailscale.com/a/10815ad1015c20
-```
+## 手机端配置
 
-在浏览器中打开该链接并完成登录授权。
+1. 在手机上安装 Tailscale。
+2. 使用与 WSL 相同的账号登录。
+3. 确认手机和 WSL 设备都出现在同一个 Tailscale 网络中。
+4. 记录 WSL 设备的 Tailscale IP 地址。
 
----
+## SSH 远程连接
 
-## 2. 手机安装 Tailscale
-
-在手机上下载安装 Tailscale，并确保：
-
-- 手机与 WSL 使用 **同一个 Tailscale 账户登录**
-- 登录成功后，设备会自动加入同一个私有网络
-
-### 效果图
-
-![Tailscale 连接效果](wsl2.png)
-
----
-
-## 3. 查看当前网络状态
-
-在 WSL 中执行：
-
-```bash
-tailscale status
-tailscale ip -4
-```
-
-说明：
-
-- `tailscale status`：查看当前设备连接状态
-- `tailscale ip -4`：查看当前 Tailscale IPv4 地址
-
----
-
-## 4. 手机安装 Termius
-
-在手机应用商店下载安装：
-
-- **Termius**
-
-用于后续通过 SSH 远程连接 WSL。
-
----
-
-## 5. 在 WSL 中安装 SSH 服务
-
-执行以下命令：
+在 WSL 中确认 SSH 服务可用：
 
 ```bash
 sudo apt update
-sudo apt install openssh-server -y
+sudo apt install openssh-server
 sudo service ssh start
 ```
 
-然后查看当前 Tailscale IP：
-
-```bash
-tailscale ip -4
-```
-
-示例输出：
+在手机 Termius 中新建连接：
 
 ```text
-100.85.174.99
+Host: WSL 的 Tailscale IP
+Port: 22
+Username: Ubuntu 用户名
+Password/Key: 对应密码或密钥
 ```
 
----
+连接成功后，即可在手机端远程运行命令和调试程序。
 
-## 6. 使用手机 Termius 连接 WSL
+## Python 依赖
 
-在 Termius 中新建 SSH 连接：
+如果需要运行 `camera_bridge.py`，先安装依赖：
 
-| 配置项 | 内容 |
-|---|---|
-| Host | `100.85.174.99` |
-| Username | Ubuntu 用户名 |
-| Password | Ubuntu 用户密码 |
+```bash
+pip install -r requirements.txt
+```
 
-连接成功后，即可通过手机远程访问 WSL。
+运行脚本：
 
-### 效果图
+```bash
+python3 camera_bridge.py
+```
 
-![SSH 连接效果](wsl1.png)
+## 结果展示
 
----
+### WSL/Tailscale 配置
 
-# 效果
+![WSL 配置截图](wsl1.png)
 
-完成后，你可以：
+### 远程连接效果
 
-- 在手机上远程访问 WSL
-- 使用 SSH 管理 Linux 环境
-- 在任何网络环境下安全连接自己的开发环境
-- 不需要公网 IP 或端口映射
+![远程连接截图](wsl2.png)
 
----
-## 7. 安装 sudo apt update     sudo apt install python3-pip -y   
-     pip3 install -r  requirements.txt
-     python3 camera_bridge.py 
+### 图像结果
 
+![图像结果](result.jpg)
 
----
-## 8.在手机浏览器中打开：
+## 学习总结
 
-https://100.85.174.99:5000     
-
-![连接效果](result.jpg)
+本周完成了远程运维能力建设。Tailscale 可以让手机和 WSL 像处于同一个局域网中一样通信，为后续手机遥控机器人、远程调试 ROS2 节点和查看运行结果提供了网络基础。

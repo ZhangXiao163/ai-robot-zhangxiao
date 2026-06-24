@@ -1,199 +1,85 @@
-# PyBullet 四足机器人 Trot 步态实现
+# Week 12 - PyBullet 四足机器人 Trot 步态实现
 
-## 1. 安装 PyBullet
+本周基于 PyBullet 搭建四足机器人仿真环境，学习并实现 Trot 小跑步态，观察四足机器人在仿真中的周期运动效果。
+
+## 本周目标
+
+- 安装 PyBullet 与 NumPy。
+- 理解四足机器人 Trot 步态的基本规律。
+- 运行课程提供的四足机器人步态代码。
+- 观察机器人在仿真中的运动效果并保存结果。
+
+## 文件说明
+
+| 文件 | 说明 |
+| :--- | :--- |
+| `README.md` | 本周实验说明。 |
+| `readmeimg.png` | 四足机器人仿真运行截图。 |
+| `radio.mp4` | 四足机器人运动效果视频。 |
+
+## 环境安装
+
+安装 PyBullet 与 NumPy：
 
 ```bash
 pip install pybullet numpy
 ```
 
-安装完成后验证：
+验证安装：
 
 ```bash
-python3 -c "import pybullet as p; print('PyBullet已安装')"
+python3 -c "import pybullet as p; print('PyBullet installed')"
 ```
 
----
-
-## 2. 拷贝课程代码
+## 课程代码来源
 
 打开课程页面：
 
-https://course.a-real.me/content/week13.html
-
-复制 **13.6.2 Trot步态实现** 的代码，并保存为：
-
-```bash
-test.py
-```
-
----
-
-## 3. 运行原始代码
-
-```bash
-python3 test.py
-```
-
-当前效果：
-
-- 狗子可以站起来
-- 但不能稳定行走
-- 容易摔倒
-
----
-
-# 4. 修改代码：让狗子稳定站立并实现行走
-
----
-
-## 4.1 自动筛选电机关节
-
-通过遍历模型的全部关节，过滤掉固定关节，只保留可旋转的驱动关节：
-
-```python
-for i in range(p.getNumJoints(robot_id)):
-    info = p.getJointInfo(robot_id, i)
-    joint_type = info[2]
-
-    # 仅保留可旋转关节
-    if joint_type == p.JOINT_REVOLUTE:
-        self.joints.append(i)
-```
-
----
-
-## 4.2 绑定四条腿的关节序号
-
-明确四条腿对应的物理关节 ID。
-
-每条腿的顺序严格为：
-
 ```text
-[侧摆, 大腿前摆, 小腿屈伸]
+https://course.a-real.me/content/week13.html
 ```
 
-例如：
+参考 `13.6.2 Trot 步态实现` 部分，将代码保存为本地脚本后运行。
 
-```python
-self.legs = {
-    "FL": [0, 1, 2],    # 左前
-    "FR": [3, 4, 5],    # 右前
-    "RL": [6, 7, 8],    # 左后
-    "RR": [9, 10, 11]   # 右后
-}
-```
+## Trot 步态原理
 
----
+Trot 是四足机器人常见的小跑步态，其特点是对角腿成组运动：
 
-## 4.3 生成对角 Trot 步态轨迹
+| 相位 | 抬起/摆动腿 | 支撑腿 |
+| :--- | :--- | :--- |
+| Phase A | 左前腿、右后腿 | 右前腿、左后腿 |
+| Phase B | 右前腿、左后腿 | 左前腿、右后腿 |
 
-利用正弦波生成小跑（Trot）步态：
+这种步态可以在速度和稳定性之间取得较好的平衡。
 
-- FR（右前）与 RL（左后）同相
-- FL（左前）与 RR（右后）反相
-- 两组相差 π（180°）
+## 控制思路
 
-```python
-# FR(右前) 和 RL(左后) 同相
-# FL(左前) 和 RR(右后) 反相
+1. 设置仿真环境、地面和机器人模型。
+2. 根据时间生成周期性步态相位。
+3. 为每条腿计算目标位置或关节角。
+4. 将目标关节角发送给 PyBullet 控制接口。
+5. 持续刷新仿真，观察机器人运动状态。
 
-if leg_name in ["FR", "RL"]:
-    swing = amplitude * np.sin(phase)
-else:
-    swing = amplitude * np.sin(phase + np.pi)
+## 运行步骤
 
-# 大腿与小腿联动
-upper_angle = 0.6 + swing
-lower_angle = -1.2 - swing
-```
-
-步态原理：
-
-- 大腿前摆时
-- 小腿反向折叠
-- 实现“抬腿”动作
-
----
-
-## 4.4 机身姿态闭环修正
-
-使用负反馈控制维持机器人平衡。
-
-获取机身姿态：
-
-```python
-# Roll 横滚
-# Pitch 俯仰
-
-roll, pitch, _ = p.getEulerFromQuaternion(orientation)
-```
-
-加入 P 控制器：
-
-```python
-# 比例反馈控制
-
-roll_correction = -0.8 * roll
-pitch_correction = -0.8 * pitch
-```
-
-控制逻辑：
-
-- 身体向左倾斜 → 自动向右修正
-- 身体前倾 → 自动向后修正
-
-相当于一个“倒立摆恢复控制”。
-
----
-
-## 4.5 展平数据并发送控制指令
-
-将四条腿计算得到的 12 个目标角度统一发送给电机。
-
-```python
-# 叠加平衡补偿
-angles[0] += roll_correction
-angles[1] += pitch_correction
-```
-
-一次性发送控制命令：
-
-```python
-p.setJointMotorControlArray(
-    bodyIndex=self.robot,
-    jointIndices=self.joints,
-    controlMode=p.POSITION_CONTROL,
-    targetPositions=all_targets
-)
-
-# 推进物理仿真
-p.stepSimulation()
-```
-
----
-
-# 5. 运行效果
-
-运行：
+运行步态脚本：
 
 ```bash
 python3 test.py
 ```
 
-效果：
+如果使用其他文件名，请将命令中的 `test.py` 替换为实际脚本名。
 
-- 四足机器人可以稳定站立
-- 能够实现 Trot 小跑步态
-- 身体具备一定自平衡能力
+## 结果展示
 
----
+### 仿真截图
 
-## 效果图
+![四足机器人仿真截图](readmeimg.png)
 
-![这是效果图](readmeimg.png)
+### 运动视频
 
----
+视频文件：`radio.mp4`
 
-## 演示视频
+## 学习总结
 
-[演示视频](radio.mp4)
+本周通过 PyBullet 直观理解了四足机器人的步态控制。Trot 步态的关键在于相位设计和腿部协调，它体现了机器人运动控制中“周期轨迹 + 稳定支撑”的基本思想。
