@@ -43,29 +43,23 @@ Branch 下拉菜单将 None 改为 main（或 master）。
 1. 标题
 使用 # 号标记，支持一到六级标题。
 
-Markdown
 # 一级标题
 ## 二级标题
 ### 三级标题
 2. 文本样式
-Markdown
 **这是加粗文本**
 *这是斜体文本*
 ~~这是删除线~~
 `单行行内代码`
 3. 列表
-Markdown
 - 无序列表项 A
 - 无序列表项 B
 
 1. 有序列表项一
 2. 有序列表项二
+
 4. 链接与图片
-Markdown
 [点击跳转的文字](https://www.example.com)
 ![图片说明](图片相对路径或网络地址)
 5. 代码块
-使用三个反引号包裹，并可以指定语言（如 html, css, javascript）：
-
-JavaScript
 console.log("Hello, GitHub Pages!");
